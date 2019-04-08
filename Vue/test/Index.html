@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />    
+</head>
+<body>   
+    <div id="app">
+        <div v-if="loading">Loading...</div>
+        <h1>{{ title }}</h1>
+        <!-- <select v-model="locale.selected">
+            <option v-for="lang in locale.options" v-bind:value="lang">
+                {{ lang }}
+            </option>
+        </select>
+        <p>{{ locale.selected }}</p> -->
+    </div>
+    <!-- <div>
+        <select v-model="templateList.selected">
+            <option v-for="lang in locale.options" v-bind:value="lang">
+                {{ lang }}
+            </option>
+        </select>
+    </div> -->
+    <div>{{ info }}</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+   
+    var app = new Vue({
+        el: '#app',
+        data() {
+            return {
+                info: null,
+                loading: true,
+                errored: false,
+                title: 'Idplus Locale Tool',
+            }
+        },
+        mounted() {
+            axios
+                .get('IDplus_Locale_config.json')
+                .then(response => {
+                    this.info = response.data
+                })
+                .catch(error => {
+                    console.log(error)
+                    this.errored = true
+                })
+                .finally(() => this.loading = false)
+        }
+        // data: {
+        //     title: 'Idplus Locale Tool',
+        //     locale:{
+        //         selected: "en-US",
+        //         options: ["en-US", "en_GB", "de_DE"]
+        //     },
+        //     info: null,
+        //     loading: true,
+        //     errored: false,
+            
+            
+        // }
+    })
+
+</script>
+</html>

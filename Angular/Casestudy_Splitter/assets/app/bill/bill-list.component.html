@@ -1,0 +1,7 @@
+<div class="col-md-12 padding-0">
+    <div class="no-bullets col-md-12 padding-0">
+        <span  class="col-md-12 padding-0" *ngFor = 'let bill of (bills | billfilter : friendService.selectedFriend : bill)'>
+            <bill-component [bill]= bill></bill-component>
+        </span>
+    </div>
+</div>

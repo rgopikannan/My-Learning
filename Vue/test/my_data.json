@@ -1,0 +1,40 @@
+{
+    "Locale": [
+        "en-US",
+        "en_GB",
+        "de_DE"
+    ],
+    "templateList": [
+        {
+            "ENUM": "EIA_CHOOSE_ACCOUNT",
+            "template": "id.quickstart.choose-account.vm",
+            "variables": [
+                "$accounts"
+            ]
+        },
+        {
+            "ENUM": "EIA_ACCESS_SUCCESS",
+            "template": "id.eia.access-success.vm",
+            "variables": [
+                "$instName"
+            ]
+        },
+        {
+            "ENUM": "EIA_REGISTER",
+            "template": "id.register.vm",
+            "variables": [
+                "$namePolicy",
+                "$givenNameErrorMessageKey",
+                "$familyNameErrorMessageKey",
+                "$registerPwdErrorMessageKey"
+            ]
+        },
+        {
+            "ENUM": "ACCESS_SUCCESS_3P",
+            "template": "id.eia.access-success.vm",
+            "variables": [
+                "$instName"
+            ]
+        }
+    ]
+}

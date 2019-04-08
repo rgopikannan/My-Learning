@@ -1,0 +1,17 @@
+<header class="row" style="background-color:#2F4F4F">
+    <div class="col-md-3">
+    <br>
+    <font class="pull-right" style="padding-left:20px" size="2" color="#1579B5"><h1>Splitter</h1></font>
+    <img class="pull-right" style="padding-bottom: 20px" src="/images/logo.png"> 
+    <br>       
+    </div>
+    <nav class="col-md-7">
+        <ul class="nav nav-pills pull-right">
+            <li routerLinkActive="active"><a [routerLink]="['/home']">Home</a></li>
+            <li routerLinkActive="active"><a [routerLink]="['/signup']">Signup</a></li>
+            <li *ngIf="!this.authService.isLoggedIn()" routerLinkActive="active"><a [routerLink]="['/signin']">Sign in</a></li>
+            <li *ngIf="this.authService.isLoggedIn()" routerLinkActive="active"><a [routerLink]="['/logout']">Logout</a></li>
+        </ul>
+    </nav>
+    <span *ngIf ='this.authService.getLoggedInUserName()'>{{ 'Welcome ' + this.authService.getLoggedInUserName()}}</span>
+</header>

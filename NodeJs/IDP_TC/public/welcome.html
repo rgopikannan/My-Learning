@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Welcome Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="main.js"></script> -->
+</head>
+<body>
+
+    <h1>Welcome to IDP</h1>
+    <button onclick="onClcik()">Click</button>
+    
+</body>
+
+<script>
+    function onClcik(){
+        console.log('onClcik.... ');
+        
+         window.postMessage("hello there!", "*");
+    }  
+    function receiveMessage(d){
+        console.log('receiveMessage...  '+d);
+        
+    }
+
+    window.addEventListener("message", receiveMessage, false);
+
+</script>
+</html>

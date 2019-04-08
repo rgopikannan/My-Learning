@@ -1,0 +1,62 @@
+<div>
+    <div class="header-div">
+        Friends
+        <a (click) = "onAddUser()">
+            <span class="glyphicon glyphicon-plus pull-right">Add</span>
+        </a>
+    </div>
+    <ul class="no-bullets padding-5">
+         <li *ngFor = "let friend of friends">
+            <a (click) = 'onFreindSelect(friend)'>
+                <span class="glyphicon glyphicon-user">
+                </span>
+                {{ friend.fName + ' ' + friend.lName}}
+            </a>
+         </li>
+    </ul>
+</div>
+
+<div class="backdrop" [ngStyle]="{'display': display}"></div>
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display': display}">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" aria-label="Close" (click)="onClose()"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Invite Friends</h4>
+            </div>
+            <div class="modal-body">
+                <form class="padding-10 no-border" [formGroup]="addFriendForm">
+
+
+                    <div class="form-group">
+                        <input
+                                type="text"
+                                id="fName"
+                                class="form-control spacing"
+                                placeholder="Enter friend's First Name"
+                                formControlName="fName">
+                        <input
+                                type="text"
+                                id="lName"
+                                class="form-control spacing"
+                                placeholder="Enter friend's Last Name"
+                                formControlName="lName">
+                        <input
+                                type="email"
+                                id="email"
+                                class="form-control spacing"
+                                placeholder="Enter friend's email"
+                                formControlName="email">
+
+                        <textarea class="form-control"
+                                  rows="3" id="message" formControlName="message"
+                                  placeholder="Include an optional message"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" (click) ="onSubmit()" class="btn btn-primary" [disabled]="!addFriendForm.valid">Add</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

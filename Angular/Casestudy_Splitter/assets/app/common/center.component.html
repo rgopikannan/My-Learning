@@ -1,0 +1,45 @@
+<div class="col-md-12">
+    <div id="center_column">
+        <div class="dashboard header">
+            <div class="topbar">
+                <h1> {{ friendService.selectedFriend ? friendService.selectedFriend.fName : ''}}</h1>
+                <div class="actions">
+                    <button class="btn btn-large btn-orange" data-toggle="modal" [disabled]="!friendService.selectedFriend" (click)="onAddBill()">
+                        Add a bill
+                    </button>
+                    <button class="btn btn-large btn-mint" data-toggle="modal" href="#settle_up_form">
+                        Settle up
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix">
+            <div id="dashboard_balances">
+                <div class="total_balances">
+                    <div class="block">
+                        <div>
+                        </div>
+                    </div>
+                    <div class="block">
+                        <div class="title">
+                            you owe
+                        </div>
+                        <span class="neutral">
+                        </span>
+                    </div>
+                    <div class="block">
+                        <div class="title">
+                            you are owed
+                        </div>
+                        <span class="neutral">
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-12">
+    <bill-list-component></bill-list-component>
+</div>
+<add-bill-component></add-bill-component>

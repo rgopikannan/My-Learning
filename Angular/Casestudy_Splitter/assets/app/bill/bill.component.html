@@ -1,0 +1,20 @@
+<div class="col-md-12 padding-0">
+    <div class="col-md-12 padding-0">
+        <div class="date col-md-2 padding-0">{{  billDate + ' ' + billMonth}}
+        </div>
+
+        <div class="col-md-4 padding-0">
+            <span class="description ">
+              <a>
+                  {{ bill.desc}}
+              </a>
+            </span>
+        </div>
+        <div class="col-md-3 padding-0">
+            <span class="pull-right">{{ bill.amt | currency:'INR':true:'1.2-2'}}</span>
+        </div>
+        <div class="col-md-3 padding-0">
+            <span class="pull-right">{{ bill.amt | currency:'INR':true:'1.2-2'}}</span>
+        </div>
+    </div>
+</div>

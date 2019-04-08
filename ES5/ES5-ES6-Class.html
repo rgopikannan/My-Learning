@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <script>
+        //ES5 Prototypoical Class implementation
+        function Person(name, age, country){
+            this.name = name;
+            this.age = age;
+            this.country = country;
+        }
+
+        Person.prototype.personInfo = function(){
+            console.log("The person name is: "+this.name+" his age is: "+this.age +" and his country:" +this.country);
+        }
+
+        var p1 =new Person('Jack', '34','USA');
+        p1.personInfo();
+
+        //ES6 Class implementation
+        class Book{
+            constructor(title,author,isbn){
+                this._title = title;
+                this.author = author;
+                this.isbn=isbn;
+
+            }
+
+            bookInfo(){
+                console.log("The Book name is: " + this.title + " and author: " + this.author + " and ISBN code:" + this.isbn);
+            }
+        }
+
+        var b1 = new Book('JS','Nicolas',"JS768SD");
+        b1.bookInfo();
+      
+
+
+    </script>
+</body>
+</html>

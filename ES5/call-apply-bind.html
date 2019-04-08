@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<script>
+        //https:/ / stackoverflow.com / questions / 15455009 / javascript - call - apply - vs - bind
+        // Use.bind() when you want that function to later be called with a certain context, useful in events. Use call() or apply() when you want to invoke the function immediately, and modify the context.
+        var sayNameAll = function(label){
+            console.log(label+" my name is: "+this.name);
+        }
+        
+        var g1 = {
+            name: 'universe'
+        };
+
+        var p1 = {
+            name: 'john'
+        };
+
+        var p2 = {
+            name: 'kevin'
+        };
+
+        var name = "God";
+        sayNameAll('Global'); //Global my name is: Viswa
+
+        //assign function 
+        p1.sayName = sayNameAll;
+        p1.sayName('p1');// p1 my name is: john
+
+        p2.sayName = sayNameAll;
+        p2.sayName('p2');//p2 my name is: kevin
+
+        //The bind() method creates a new function that, when called, has its this keyword set to the provided value
+        p1.sayName = sayNameAll.bind(g1, 'g1');
+        p1.sayName();// g1 my name is: universe
+
+        p2.sayName = sayNameAll.bind(p1);
+        p2.sayName('p2');// p2 my name is: john
+
+        // Use.call() or.apply() when you want to invoke the function immediately, and modify the context.
+
+        function callNameAll(label,method) {
+            console.log("Index: "+label+" Method: " + method+ " - my name is: " + this.name);
+        }
+
+        //call(element, i,'call') - element - this ref and (i, 'call') pass an individual params
+        var nameArr = [{ name: "jack" }, { name: "warner" }, { name: "bill" }];
+        nameArr.forEach((element, i) => {
+            callNameAll.call(element, i,'call');
+        });
+
+        // apply(element,[i,'apply']) - 'element' - this ref and [i,'apply'] pass an array params
+        var nameArr = [{name:"joe"}, { name: "benny" }, { name: "dev" }];
+        nameArr.forEach((element, i) => {
+           callNameAll.apply(element,[i,'apply']);
+        });
+        
+</script>
+<body>
+    
+</body>
+</html>

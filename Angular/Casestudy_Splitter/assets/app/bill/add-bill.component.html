@@ -1,0 +1,37 @@
+<div class="backdrop" [ngStyle]="{'display': display}"></div>
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display': billService.displayAddBill}">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" aria-label="Close" (click)="onClose()">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Add a bill</h4>
+            </div>
+            <div class="modal-body">
+                <form class="padding-10 no-border" [formGroup]="addBillForm">
+                    <div class="form-group">
+                        <input
+                                type="text"
+                                id="desc"
+                                class="form-control spacing"
+                                placeholder="Enter bill description"
+                                formControlName="desc">
+                        <input
+                                type="number"
+                                id="amt"
+                                class="form-control spacing"
+                                placeholder="Enter bill amount"
+                                formControlName="amt">
+                        <span>Paid by</span>
+                        <button type="button" (click) = 'onPaidByYou()'>You</button>
+                        <span>and split</span>
+                        <button type="button" (click) = 'onSplitEqually()'>Equally</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" (click) ="onSplit()" class="btn btn-primary" [disabled]="!addBillForm.valid">Split</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

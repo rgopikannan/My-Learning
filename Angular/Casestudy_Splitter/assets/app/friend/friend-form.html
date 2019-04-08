@@ -1,0 +1,16 @@
+<form class="padding-10" [formGroup]="addFriendForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <input
+                type="email"
+                id="email"
+                class="form-control"
+                placeholder="Your Email"
+                formControlName="email">
+
+        <input type="password"
+               id="password"
+               class="form-control"
+               formControlName="password"
+               placeholder="Password">
+    </div>
+</form>

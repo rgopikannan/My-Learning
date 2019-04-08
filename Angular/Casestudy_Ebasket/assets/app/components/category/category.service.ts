@@ -1,0 +1,66 @@
+import { Http, Response, Headers } from "@angular/http";
+import { Injectable, EventEmitter } from "@angular/core";
+import 'rxjs/Rx';
+import { Observable } from "rxjs";
+import { Category } from "./category.model";
+
+/**
+ * @CategoryService
+ * @description
+ * this service to handle category
+ */
+
+@Injectable()
+export class CategoryService {
+
+    /**
+     * @type {Category[]}
+     * @default []
+     */
+    private categories: Category[] = [];
+
+    /**
+     * @type {string}
+     */
+    private categoryUrl: string = 'data/category.json';
+
+    /**
+     * Constructor for CategoryService class
+     * @param http
+     */
+    constructor(private http: Http) {
+    }
+
+    /**
+     * @name handleError handle error
+     * @param error
+     * @returns {ErrorObservable}
+     */
+    private handleError (error: any): Observable<any> {
+        // let errMsg = (error.message) ? error.message :
+        //     error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+        return Observable.throw(error);
+    }
+
+    /**
+     * @name extractCategory get catory from response
+     * @param res
+     * @returns {Category[]}
+     */
+    private extractCategory(res: Response): Category[] {
+        let body = res.json();
+        this.categories = body.categories || { };
+        return this.categories;
+    }
+
+    /**
+     * @name getCategory get category data from json file
+     * @returns {any|Promise<R>|Promise<T|Observable<any>>|Promise<Observable<any>>|Promise<T>}
+     */
+    getCategory(): Observable <Category[]>{
+        //TODO get category from categoryUrl
+        return this.http.get(this.categoryUrl)
+            .map(this.extractCategory)
+            .catch(this.handleError);
+    }
+}
