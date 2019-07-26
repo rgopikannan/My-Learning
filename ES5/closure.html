@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Closure</title>
+</head>
+<body>
+    <script>
+    
+
+        function Person(){
+            this.age = 20;
+            this.name = "John";
+            let role = "Dev";
+            function print(){
+                console.log(this.name+"   "+this.age+"  "+ role);
+            }
+
+            print();
+        }
+
+        for (var i = 1; i <= 5; i++) {
+            setTimeout(function timer() {
+                console.log(i);
+            }, i * 1000);
+        }
+
+        for (var i = 1; i <= 5; i++) {
+            (function(j){
+                setTimeout(function timer() {
+                    console.log(i);
+                }, j * 1000);
+            })(i)
+                
+            }
+
+        let pObj = new Person();
+        console.dir(pObj);
+
+    </script>
+    
+</body>
+</html>

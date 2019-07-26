@@ -1,17 +1,26 @@
 import React, {Component} from 'react';
 
 class BlogList extends Component {
+
+  constructor(props){
+    super(props);
+  }
+
   render() {
     return (
       <div className="blogContent">
         <ul>
-          <li>
-            <div>
-              <a href="#">Post 1</a>
-              <p>Description</p>
-              <i>Author</i>
-            </div>
-          </li>
+          {this.props.dataList.map((item, index) => {
+            return (
+              <li key={index}>
+                <div>
+                  <a href="#">{item.post}</a>
+                  <p>{item.description}</p>
+                  <i>{item.author}</i>
+                </div>
+              </li>
+            );
+          })}
         </ul>
       </div>
     );

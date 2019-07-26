@@ -59,6 +59,17 @@
         nameArr.forEach((element, i) => {
            callNameAll.apply(element,[i,'apply']);
         });
+
+
+        var obj = {
+            a: 1,
+            getA: function () {
+                this.a = obj.a;
+                return this.a
+            }
+        }
+        var get = obj.getA.call({a:5});
+        console.log(get); //1
         
 </script>
 <body>

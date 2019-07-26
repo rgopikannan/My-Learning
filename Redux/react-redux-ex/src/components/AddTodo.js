@@ -1,15 +1,31 @@
 import React, {Component} from 'react';
+import { addTodo } from '../actions'
+import { connect } from 'react-redux';
+
+
 
 class AddTodo extends Component {
-    
-    render(){
+    constructor(){
+        super();
+        this.setTextInput = (element) =>{
+            this.inputTxt = element;
+        }
+    }
+
+    onAddTodo = (dispatch) => {
+        console.log(this.inputTxt.value);
+        store.dispatch(addTodo(this.inputTxt.value));
+    }    
+
+    render(){   
+
         return(
             <div>
-               <input type="text"/>
-               <button>Add Todo</button>                
+                <input type="text" ref={this.setTextInput}/>
+               <button onClick={this.onAddTodo}>Add Todo</button>                
             </div>
         );
     }
 }
 
-export default AddTodo;
+export default connect()(AddTodo);

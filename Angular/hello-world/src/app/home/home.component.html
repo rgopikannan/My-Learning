@@ -1,0 +1,18 @@
+<div>
+  <h1>Home works</h1>
+  <!-- <input type="text" [(userTxt)] /> -->
+  <br/>
+  <p> {{ title }} </p>
+  <p>Salutation:
+    <select>
+      <option *ngFor="let i of salutationList">{{ i }}</option>
+    </select>
+  </p>
+
+  <p>Input 1: <input type="text" [(ngModel)]="number1" /></p>
+  <p>Input 2: <input type="text" [(ngModel)]="number2" /></p>
+  <button (click)="addNumbers()" >Add</button>
+  <br />
+  <p>{{ this.result }}</p>
+</div>
+

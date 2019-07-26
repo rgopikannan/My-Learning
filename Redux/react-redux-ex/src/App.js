@@ -11,7 +11,7 @@ class App extends Component {
       <div className="App">
         <h1>React-Redux</h1>
         <div className="container">
-          <AddTodo />
+          <AddTodo {dispatch} />
           <ViewTodoList />
           <FilterTodoList />
         </div>
